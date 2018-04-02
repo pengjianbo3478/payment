@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gl365.payment.mapper.PayStreamMapper">
+	<resultMap id="BaseResultMap" type="com.gl365.payment.model.PayStream">
+		<id column="pay_id" property="payId" />
+		<result column="request_id" property="requestId" />
+		<result column="request_date" property="requestDate" />
+		<result column="orig_request_id" property="origRequestId" />
+		<result column="orig_pay_date" property="origPayDate" />
+		<result column="organ_code" property="organCode" />
+		<result column="organ_merchant_no" property="organMerchantNo" />
+		<result column="unique_serial" property="uniqueSerial" />
+		<result column="terminal" property="terminal" />
+		<result column="operator" property="operator" />
+		<result column="trans_type" property="transType" />
+		<result column="total_amount" property="totalAmount" />
+		<result column="return_amount" property="returnAmount" />
+		<result column="deal_status" property="dealStatus" />
+		<result column="deal_desc" property="dealDesc" />
+		<result column="create_time" property="createTime" />
+		<result column="create_by" property="createBy" />
+		<result column="modify_time" property="modifyTime" />
+		<result column="modify_by" property="modifyBy" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		pay_id,
+		request_id,
+		request_date,
+		orig_request_id,
+		orig_pay_date,
+		organ_code,
+		organ_merchant_no,
+		uniqueSerial,
+		terminal,
+		operator,
+		trans_type,
+		total_amount,
+		return_amount,
+		deal_status,
+		deal_desc,
+		create_time,
+		create_by,
+		modify_time,
+		modify_by
+	</sql>
+
+	<insert id="insert" parameterType="com.gl365.payment.model.PayStream">
+		insert into pay_stream values(
+		#{payId}, #{requestId}, #{requestDate},
+		#{origRequestId}, #{origPayDate},#{organCode},
+		#{organMerchantNo},#{uniqueSerial},
+		#{terminal}, #{operator},
+		#{transType}, #{totalAmount}, #{returnAmount},
+		#{dealStatus},#{dealDesc}, #{createTime}, #{createBy},
+		#{modifyTime}, #{modifyBy})
+	</insert>
+
+	<insert id="insertSelective" parameterType="com.gl365.payment.model.PayStream">
+		insert into pay_stream
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="payId != null">
+				pay_id,
+			</if>
+			<if test="requestId != null">
+				request_id,
+			</if>
+			<if test="requestDate != null">
+				request_date,
+			</if>
+			<if test="origRequestId != null">
+				orig_request_id,
+			</if>
+			<if test="origPayDate != null">
+				orig_pay_date,
+			</if>
+			<if test="organCode != null">
+				organ_code,
+			</if>
+			<if test="organMerchantNo != null">
+				organ_merchant_no,
+			</if>
+			<if test="terminal != null">
+				terminal,
+			</if>
+			<if test="operator != null">
+				operator,
+			</if>
+			<if test="transType != null">
+				trans_type,
+			</if>
+			<if test="totalAmount != null">
+				total_amount,
+			</if>
+			<if test="returnAmount != null">
+				return_amount,
+			</if>
+			<if test="dealStatus != null">
+				deal_status,
+			</if>
+			<if test="dealDesc != null">
+				deal_desc,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="createBy != null">
+				create_by,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="modifyBy != null">
+				modify_by,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="payId != null">
+				#{payId},
+			</if>
+			<if test="requestId != null">
+				#{requestId},
+			</if>
+			<if test="requestDate != null">
+				#{requestDate},
+			</if>
+			<if test="origRequestId != null">
+				#{origRequestId},
+			</if>
+			<if test="origPayDate != null">
+				#{origPayDate},
+			</if>
+			<if test="organCode != null">
+				#{organCode},
+			</if>
+			<if test="organMerchantNo != null">
+				#{organMerchantNo},
+			</if>
+			<if test="terminal != null">
+				#{terminal},
+			</if>
+			<if test="operator != null">
+				#{operator},
+			</if>
+			<if test="transType != null">
+				#{transType},
+			</if>
+			<if test="totalAmount != null">
+				#{totalAmount},
+			</if>
+			<if test="returnAmount != null">
+				#{returnAmount},
+			</if>
+			<if test="dealStatus != null">
+				#{dealStatus},
+			</if>
+			<if test="dealDesc != null">
+				#{dealDesc},
+			</if>
+			<if test="createTime != null">
+				#{createTime},
+			</if>
+			<if test="createBy != null">
+				#{createBy},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime},
+			</if>
+			<if test="modifyBy != null">
+				#{modifyBy},
+			</if>
+		</trim>
+	</insert>
+
+	<select id="queryByRequestId" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select * from pay_stream where request_id = #{requestId}
+	</select>
+
+	<select id="queryByPayId" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select * from pay_stream where pay_id = #{0}
+	</select>
+
+	<update id="updateStatus" parameterType="java.lang.String">
+		update pay_stream set deal_status = #{dealStatus},deal_desc = #{dealDesc} where pay_id = #{payId}
+	</update>
+
+	<select id="queryByRequestIdAndOrganMerNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select * from pay_stream where request_id = #{requestId} and organ_merchant_no=#{organMerchantNo}
+	</select>
+
+</mapper>

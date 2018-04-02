@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gl365.payment.mapper.PayReturnMapper">
+	<resultMap id="BaseResultMap" type="com.gl365.payment.model.PayReturn">
+		<id column="pay_id" property="payId" jdbcType="VARCHAR" />
+		<result column="request_id" property="requestId" jdbcType="VARCHAR" />
+		<result column="request_date" property="requestDate" jdbcType="DATE" />
+		<result column="orig_pay_id" property="origPayId" jdbcType="VARCHAR" />
+		<result column="orig_pay_date" property="origPayDate" jdbcType="DATE" />
+		<result column="organ_code" property="organCode" jdbcType="VARCHAR" />
+		<result column="organ_merchant_no" property="organMerchantNo" jdbcType="VARCHAR" />
+		<result column="merchant_no" property="merchantNo" jdbcType="VARCHAR" />
+		<result column="merchant_name" property="merchantName" jdbcType="VARCHAR" />
+		<result column="terminal" property="terminal" jdbcType="VARCHAR" />
+		<result column="operator" property="operator" jdbcType="VARCHAR" />
+		<result column="settle_organ_no" property="settleOrganNo" jdbcType="VARCHAR" />
+		<result column="merchant_agent_no" property="merchantAgentNo" jdbcType="VARCHAR" />
+		<result column="user_agent_type" property="userAgentType" jdbcType="CHAR" />
+		<result column="user_agent_no" property="userAgentNo"  />
+		<result column="parent_agent_no" property="parentAgentNo" jdbcType="VARCHAR" />
+		<result column="invite_agent_no" property="inviteAgentNo" jdbcType="VARCHAR" />
+		<result column="user_dev_manager" property="userDevManager" jdbcType="VARCHAR" />
+		<result column="user_dev_staff" property="userDevStaff" jdbcType="VARCHAR" />
+		<result column="province" property="province" jdbcType="SMALLINT" />
+		<result column="city" property="city" jdbcType="SMALLINT" />
+		<result column="district" property="district" jdbcType="SMALLINT" />
+		<result column="trans_type" property="transType" jdbcType="VARCHAR" />
+		<result column="user_id" property="userId" jdbcType="VARCHAR" />
+		<result column="user_name" property="userName" jdbcType="VARCHAR" />
+		<result column="user_mobile" property="userMobile" jdbcType="VARCHAR" />
+		<result column="card_index" property="cardIndex" jdbcType="VARCHAR" />
+		<result column="card_no" property="cardNo" jdbcType="VARCHAR" />
+		<result column="total_amount" property="totalAmount" />
+		<result column="no_benefit_amount" property="noBenefitAmount" />
+		<result column="cash_amount" property="cashAmount" />
+		<result column="bean_amount" property="beanAmount" />
+		<result column="coin_amount" property="coinAmount" />
+		<result column="pay_fee_type" property="payFeeType" />
+		<result column="pay_fee_rate" property="payFeeRate" />
+		<result column="max_pay_fee" property="maxPayFee" />
+		<result column="pay_fee" property="payFee" />
+		<result column="comm_type" property="commType" jdbcType="VARCHAR" />
+		<result column="comm_rate" property="commRate" />
+		<result column="gift_rate" property="giftRate" />
+		<result column="comm_amount" property="commAmount" />
+		<result column="marcket_fee" property="marcketFee" />
+		<result column="gift_amount" property="giftAmount" />
+		<result column="gift_point" property="giftPoint" />
+		<result column="merchant_settle_amount" property="merchantSettleAmount" />
+		<result column="pay_time" property="payTime" jdbcType="TIMESTAMP" />
+		<result column="pay_status" property="payStatus" jdbcType="VARCHAR" />
+		<result column="pay_desc" property="payDesc" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+		<result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+		<result column="modify_by" property="modifyBy" jdbcType="VARCHAR" />
+		<result column="merchant_order_no" property="merchantOrderNo" jdbcType="VARCHAR" />
+		<result column="orig_merchant_order_no" property="origMerchantOrderNo" jdbcType="VARCHAR" />
+		<result column="organ_order_no" property="organOrderNo" jdbcType="VARCHAR" />
+		<result column="orig_organ_order_no" property="origOrganOrderNo" jdbcType="VARCHAR" />
+		<result column="transaction_id" property="transactionId" jdbcType="VARCHAR" />
+		<result column="organ_pay_time" property="organPayTime" jdbcType="TIMESTAMP" />
+		<result column="join_type" property="joinType" jdbcType="VARCHAR" />
+		<result column="scene" property="scene" />
+		<result column="order_type" property="orderType" />
+		<result column="merchant_order_title" property="merchantOrderTitle" />
+		<result column="merchent_order_desc" property="merchentOrderDesc" />
+		<result column="reward_user_id" property="rewardUserId" />
+		<result column="reward_pay_id" property="rewardPayId" />
+		<result column="group_order_id" property="groupOrderId" />
+		<result column="split_flag" property="splitFlag" />
+		<result column="group_mainuser_pay" property="groupMainuserPay" />
+		<result column="group_pt_pay" property="groupPtPay" />
+		<result column="group_mainuser_pay_bean" property="groupMainuserPayBean" />
+		<result column="group_gift_amount" property="groupGiftAmount" />
+		<result column="group_merchant_no" property="groupMerchantNo" />
+		<result column="dec_amount" property="decAmount" />
+		<result column="settle_merchant_no" property="settleMerchantNo" />
+		<result column="parent_merchant_no" property="parentMerchantNo" />
+		<result column="pre_settle_date"  property="preSettleDate" />
+		<result column="organ_pay_status"  property="organPayStatus" />
+		<result column="organ_return_time"  property="organReturnTime" />
+	</resultMap>
+
+	<select id="queryByOrigPayId" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select * from pay_return where orig_pay_id=#{0}
+	</select>
+
+	<insert id="insert" parameterType="com.gl365.payment.model.PayReturn">
+		insert into pay_return(
+		pay_id, request_id, request_date,
+		orig_pay_id, orig_pay_date,
+		organ_code, organ_merchant_no,
+		merchant_no, merchant_name, terminal,
+		operator, settle_organ_no, merchant_agent_no,
+		user_agent_type, parent_agent_no,
+		invite_agent_no, user_agent_no, 
+		user_dev_manager, user_dev_staff, 
+		province, city, district, trans_type,
+		user_id, user_name, user_mobile, 
+		card_index, card_no, total_amount, 
+		no_benefit_amount, cash_amount, bean_amount,
+		coin_amount, pay_fee_rate, pay_fee, 
+		pay_fee_type, comm_rate, max_pay_fee, 
+		gift_rate, comm_amount, marcket_fee,
+		gift_amount, gift_point, merchant_settle_amount,
+		pay_time, pay_status, pay_desc, create_time,
+		create_by, modify_time, modify_by, merchant_order_no,
+		orig_merchant_order_no, organ_order_no, orig_organ_order_no, 
+		transaction_id, organ_pay_time, join_type, 
+		scene, order_type, merchant_order_title, 
+		merchent_order_desc, reward_user_id, 
+		reward_pay_id, group_order_id, 
+		split_flag, group_mainuser_pay, group_pt_pay,
+		group_mainuser_pay_bean, group_gift_amount, group_merchant_no, dec_amount,
+		settle_merchant_no,parent_merchant_no,pre_settle_date,organ_pay_status,organ_return_time)
+		values (
+		#{payId},
+		#{requestId},
+		#{requestDate},
+		#{origPayId},
+		#{origPayDate},
+		#{organCode},
+		#{organMerchantNo},
+		#{merchantNo},
+		#{merchantName},
+		#{terminal},
+		#{operator},
+		#{settleOrganNo},
+		#{merchantAgentNo},
+		#{userAgentType},
+		#{parentAgentNo},
+		#{inviteAgentNo},
+		#{userAgentNo},
+		#{userDevManager},
+		#{userDevStaff},
+		#{province},
+		#{city},
+		#{district},
+		#{transType},
+		#{userId},
+		#{userName},
+		#{userMobile},
+		#{cardIndex},
+		#{cardNo},
+		#{totalAmount},
+		#{noBenefitAmount},
+		#{cashAmount},
+		#{beanAmount},
+		#{coinAmount},
+		#{payFeeRate},
+		#{payFee},
+		#{payFeeType},
+		#{commRate},
+		#{maxPayFee},
+		#{giftRate},
+		#{commAmount},
+		#{marcketFee},
+		#{giftAmount},
+		#{giftPoint},
+		#{merchantSettleAmount},
+		#{payTime},
+		#{payStatus},
+		#{payDesc},
+		#{createTime},
+		#{createBy},
+		#{modifyTime},
+		#{modifyBy},
+		#{merchantOrderNo},
+		#{origMerchantOrderNo},
+		#{organOrderNo},
+		#{origOrganOrderNo},
+		#{transactionId},
+		#{organPayTime},
+		#{joinType},
+		#{scene},
+		#{orderType},
+		#{merchantOrderTitle},
+		#{merchentOrderDesc},
+		#{rewardUserId},
+		#{rewardPayId},
+		#{groupOrderId},
+		#{splitFlag},
+		#{groupMainuserPay},
+		#{groupPtPay},
+		#{groupMainuserPayBean},
+		#{groupGiftAmount},
+		#{groupMerchantNo},
+		#{decAmount},
+		#{settleMerchantNo},
+		#{parentMerchantNo},
+		#{preSettleDate},
+		#{organPayStatus},
+		#{organReturnTime}
+		)
+	</insert>
+	
+	<select id="queryPagePayReturn" parameterType="com.gl365.payment.model.PayReturn" resultMap="BaseResultMap">
+		select * from pay_return where 1=1
+  		<if test="userMobile != null">
+  			and user_mobile like CONCAT('%',#{userMobile},'%')
+  		</if>
+  		<if test="userName != null">
+  			and user_name like CONCAT('%',#{userName},'%')
+  		</if>
+  		<if test="payStatus != null">
+  			and pay_status = #{payStatus}
+  		</if>
+  		<if test="requestDate != null">
+			and request_date = #{requestDate}
+		</if>
+		order by create_time desc
+	</select>
+	
+	<update id="updateStatus" parameterType="com.gl365.payment.model.PayMain">
+		update pay_return
+		set
+		pay_status = #{payStatus},
+		pay_desc = #{payDesc},
+		modify_time = now(),
+		modify_by = #{modifyBy}
+		where pay_id = #{payId}
+	</update>
+	
+	<select id="queryByPayId" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select * from pay_return where pay_id=#{payId}
+	</select>
+	
+	<update id="" parameterType="java.lang.String">
+		update pay_return
+		set
+		pay_status = #{payStatus}
+		where pay_id = #{payId}
+	</update>
+	
+	<select id="queryByMerchantOrder"  resultMap="BaseResultMap">
+		select * from pay_return where organ_code=#{organCode} and merchant_order_no=#{merchant_order_no}
+	</select>
+	
+	<select id="updateReturnTime"  parameterType="com.gl365.payment.model.PayReturn">
+		update pay_return set organ_pay_status=#{organPayStatus},organ_return_time=#{organReturnTime}  where organ_code=#{organCode} and merchant_order_no=#{merchantOrderNo}
+	</select>
+</mapper>

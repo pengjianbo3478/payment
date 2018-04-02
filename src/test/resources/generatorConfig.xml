@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<classPathEntry location="e:\java\mysql-connector-java-5.1.41.jar" />
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.0.31:3306/payment_data" userId="payment_logic" password="logic_payment" />
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<javaModelGenerator targetPackage="com.gl365.payment.model" targetProject="payment">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="com.gl365.payment.mapper" targetProject="payment">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<javaClientGenerator targetPackage="com.gl365.payment.mapper" targetProject="payment" type="XMLMAPPER">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		<table tableName="pay_notify">
+			<property name="domainObjectName" value="PayNotify" />
+			<property name="enableCountByExample" value="false" />
+			<property name="enableUpdateByExample" value="false" />
+			<property name="enableDeleteByExample" value="false" />
+			<property name="enableSelectByExample" value="false" />
+			<property name="selectByExampleQueryId" value="false" />
+			<property name="enableSelectByPrimaryKey" value="false" />
+			<property name="enableUpdateByPrimaryKey" value="false" />
+			<property name="enableDeleteByPrimaryKey" value="false" />
+		</table>
+		
+	</context>
+</generatorConfiguration>  

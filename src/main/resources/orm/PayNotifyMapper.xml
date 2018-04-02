@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gl365.payment.mapper.PayNotifyMapper">
+	<resultMap id="BaseResultMap" type="com.gl365.payment.model.PayNotify">
+		<result column="pay_id" property="payId" />
+		<result column="request_id" property="requestId" />
+		<result column="status" property="status" />
+	</resultMap>
+
+	<insert id="insert" parameterType="com.gl365.payment.model.PayNotify">
+		insert into pay_notify (pay_id, request_id,status) values (#{payId},#{requestId},#{status})
+	</insert>
+
+	<select id="queryByPayNotify" parameterType="com.gl365.payment.model.PayNotify" resultMap="BaseResultMap">
+		select * from pay_notify where pay_id = #{payId} and request_id=#{requestId}
+	</select>
+</mapper>

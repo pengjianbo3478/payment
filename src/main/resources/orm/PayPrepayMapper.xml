@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gl365.payment.mapper.PayPrepayMapper">
+	<resultMap id="BaseResultMap" type="com.gl365.payment.model.PayPrepay">
+		<id column="pay_id" property="payId" />
+		<result column="request_id" property="requestId" />
+		<result column="request_date" property="requestDate" />
+		<result column="organ_code" property="organCode" />
+		<result column="organ_merchant_no" property="organMerchantNo" />
+		<result column="merchant_no" property="merchantNo" />
+		<result column="merchant_name" property="merchantName" />
+		<result column="terminal" property="terminal" />
+		<result column="operator" property="operator" />
+		<result column="settle_organ_no" property="settleOrganNo" />
+		<result column="merchant_agent_no" property="merchantAgentNo" />
+		<result column="parent_agent_no" property="parentAgentNo" />
+		<result column="invite_agent_No" property="inviteAgentNo" />
+		<result column="merchant_agent_no" property="merchantAgentNo" />
+		<result column="user_agent_type" property="userAgentType" />
+		<result column="user_agent_no" property="userAgentNo" />
+		<result column="user_dev_manager" property="userDevManager" />
+		<result column="user_dev_staff" property="userDevStaff" />
+		<result column="province" property="province" />
+		<result column="city" property="city" />
+		<result column="district" property="district" />
+		<result column="trans_type" property="transType" />
+		<result column="scene" property="scene" />
+		<result column="order_type" property="orderType" />
+		<result column="merchant_order_title" property="merchantOrderTitle" />
+		<result column="merchent_order_desc" property="merchentOrderDesc" />
+		<result column="merchant_order_no" property="merchantOrderNo" />
+		<result column="user_id" property="userId" />
+		<result column="user_name" property="userName" />
+		<result column="user_mobile" property="userMobile" />
+		<result column="card_index" property="cardIndex" />
+		<result column="card_no" property="cardNo" />
+		<result column="total_amount" property="totalAmount" />
+		<result column="no_benefit_amount" property="noBenefitAmount" />
+		<result column="pay_fee" property="payFee" />
+		<result column="cash_amount" property="cashAmount" />
+		<result column="bean_amount" property="beanAmount" />
+		<result column="coin_amount" property="coinAmount" />
+		<result column="pay_fee_rate" property="payFeeRate" />
+		<result column="pay_fee_type" property="payFeeType" />
+		<result column="comm_rate" property="commRate" />
+		<result column="max_pay_fee" property="maxPayFee" />
+		<result column="marcket_fee" property="marcketFee" />
+		<result column="comm_amount" property="commAmount" />
+		<result column="gift_rate" property="giftRate" />
+		<result column="gift_amount" property="giftAmount" />
+		<result column="gift_point" property="giftPoint" />
+		<result column="merchant_settle_amount" property="merchantSettleAmount" />
+		<result column="pay_status" property="payStatus" />
+		<result column="pay_desc" property="payDesc" />
+		<result column="create_by" property="createBy" />
+		<result column="create_time" property="createTime" />
+		<result column="modify_by" property="modifyBy" />
+		<result column="modify_time" property="modifyTime" />
+		<result column="join_type" property="joinType" />
+		<result column="settle_merchant_no" property="settleMerchantNo" />
+		<result column="parent_merchant_no" property="parentMerchantNo" />
+	</resultMap>
+
+	<insert id="insertSelective" parameterType="com.gl365.payment.model.PayPrepay">
+		insert into pay_prepay
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="payId != null">
+				pay_id,
+			</if>
+			<if test="requestId != null">
+				request_id,
+			</if>
+			<if test="requestDate != null">
+				request_date,
+			</if>
+			<if test="organCode != null">
+				organ_code,
+			</if>
+			<if test="organMerchantNo != null">
+				organ_merchant_no,
+			</if>
+			<if test="merchantNo != null">
+				merchant_no,
+			</if>
+			<if test="merchantName != null">
+				merchant_name,
+			</if>
+			<if test="terminal != null">
+				terminal,
+			</if>
+			<if test="operator != null">
+				operator,
+			</if>
+			<if test="settleOrganNo != null">
+				settle_organ_no,
+			</if>
+			<if test="merchantAgentNo != null">
+				merchant_agent_no,
+			</if>
+			<if test="parentAgentNo != null">
+				parent_agent_no,
+			</if>
+			<if test="inviteAgentNo != null">
+				invite_agent_no,
+			</if>
+			<if test="userAgentType != null">
+				user_agent_type,
+			</if>
+			<if test="userAgentNo != null">
+				user_agent_no,
+			</if>
+			<if test="userDevManager != null">
+				user_dev_manager,
+			</if>
+			<if test="userDevStaff != null">
+				user_dev_staff,
+			</if>
+			<if test="province != null">
+				province,
+			</if>
+			<if test="city != null">
+				city,
+			</if>
+			<if test="district != null">
+				district,
+			</if>
+			<if test="transType != null">
+				trans_type,
+			</if>
+			<if test="scene != null">
+				scene,
+			</if>
+			<if test="orderType != null">
+				order_type,
+			</if>
+			<if test="merchantOrderTitle != null">
+				merchant_order_title,
+			</if>
+			<if test="merchentOrderDesc != null">
+				merchent_order_desc,
+			</if>
+			<if test="merchantOrderNo != null">
+				merchant_order_no,
+			</if>
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="userName != null">
+				user_name,
+			</if>
+			<if test="userMobile != null">
+				user_mobile,
+			</if>
+			<if test="cardIndex != null">
+				card_index,
+			</if>
+			<if test="cardNo != null">
+				card_no,
+			</if>
+			<if test="totalAmount != null">
+				total_amount,
+			</if>
+			<if test="noBenefitAmount != null">
+				no_benefit_amount,
+			</if>
+			<if test="payFee != null">
+				pay_fee,
+			</if>
+			<if test="cashAmount != null">
+				cash_amount,
+			</if>
+			<if test="beanAmount != null">
+				bean_amount,
+			</if>
+			<if test="coinAmount != null">
+				coin_amount,
+			</if>
+			<if test="payFeeRate != null">
+				pay_fee_rate,
+			</if>
+			<if test="payFeeType != null">
+				pay_fee_type,
+			</if>
+			<if test="commRate != null">
+				comm_rate,
+			</if>
+			<if test="maxPayFee != null">
+				max_pay_fee,
+			</if>
+			<if test="marcketFee != null">
+				marcket_fee,
+			</if>
+			<if test="commAmount != null">
+				comm_amount,
+			</if>
+			<if test="giftRate != null">
+				gift_rate,
+			</if>
+			<if test="giftAmount != null">
+				gift_amount,
+			</if>
+			<if test="giftPoint != null">
+				gift_point,
+			</if>
+			<if test="merchantSettleAmount != null">
+				merchant_settle_amount,
+			</if>
+			<if test="payStatus != null">
+				pay_status,
+			</if>
+			<if test="payDesc != null">
+				pay_desc,
+			</if>
+			<if test="createBy != null">
+				create_by,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="modifyBy != null">
+				modify_by,
+			</if>
+			<if test="modifyTime != null">
+				modify_time,
+			</if>
+			<if test="joinType != null">
+				join_type,
+			</if>
+			<if test="settleMerchantNo != null">
+				settle_merchant_no,
+			</if>
+			<if test="parentMerchantNo != null">
+				parent_merchant_no
+			</if>
+			
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="payId != null">
+				#{payId},
+			</if>
+			<if test="requestId != null">
+				#{requestId},
+			</if>
+			<if test="requestDate != null">
+				#{requestDate},
+			</if>
+			<if test="organCode != null">
+				#{organCode},
+			</if>
+			<if test="organMerchantNo != null">
+				#{organMerchantNo},
+			</if>
+			<if test="merchantNo != null">
+				#{merchantNo},
+			</if>
+			<if test="merchantName != null">
+				#{merchantName},
+			</if>
+			<if test="terminal != null">
+				#{terminal},
+			</if>
+			<if test="operator != null">
+				#{operator},
+			</if>
+			<if test="settleOrganNo != null">
+				#{settleOrganNo},
+			</if>
+			<if test="merchantAgentNo != null">
+				#{merchantAgentNo},
+			</if>
+			<if test="parentAgentNo != null">
+				#{parentAgentNo},
+			</if>
+			<if test="inviteAgentNo != null">
+				#{inviteAgentNo},
+			</if>
+			<if test="userAgentType != null">
+				#{userAgentType},
+			</if>
+			<if test="userAgentNo != null">
+				#{userAgentNo},
+			</if>
+			<if test="userDevManager != null">
+				#{userDevManager},
+			</if>
+			<if test="userDevStaff != null">
+				#{userDevStaff},
+			</if>
+			<if test="province != null">
+				#{province},
+			</if>
+			<if test="city != null">
+				#{city},
+			</if>
+			<if test="district != null">
+				#{district},
+			</if>
+			<if test="transType != null">
+				#{transType},
+			</if>
+			<if test="scene != null">
+				#{scene},
+			</if>
+			<if test="orderType != null">
+				#{orderType},
+			</if>
+			<if test="merchantOrderTitle != null">
+				#{merchantOrderTitle},
+			</if>
+			<if test="merchentOrderDesc != null">
+				#{merchentOrderDesc},
+			</if>
+			<if test="merchantOrderNo != null">
+				#{merchantOrderNo},
+			</if>
+			<if test="userId != null">
+				#{userId},
+			</if>
+			<if test="userName != null">
+				#{userName},
+			</if>
+			<if test="userMobile != null">
+				#{userMobile},
+			</if>
+			<if test="cardIndex != null">
+				#{cardIndex},
+			</if>
+			<if test="cardNo != null">
+				#{cardNo},
+			</if>
+			<if test="totalAmount != null">
+				#{totalAmount},
+			</if>
+			<if test="noBenefitAmount != null">
+				#{noBenefitAmount},
+			</if>
+			<if test="payFee != null">
+				#{payFee},
+			</if>
+			<if test="cashAmount != null">
+				#{cashAmount},
+			</if>
+			<if test="beanAmount != null">
+				#{beanAmount},
+			</if>
+			<if test="coinAmount != null">
+				#{coinAmount},
+			</if>
+			<if test="payFeeRate != null">
+				#{payFeeRate},
+			</if>
+			<if test="payFeeType != null">
+				#{payFeeType},
+			</if>
+			<if test="commRate != null">
+				#{commRate},
+			</if>
+			<if test="maxPayFee != null">
+				#{maxPayFee},
+			</if>
+			<if test="marcketFee != null">
+				#{marcketFee},
+			</if>
+			<if test="commAmount != null">
+				#{commAmount},
+			</if>
+			<if test="giftRate != null">
+				#{giftRate},
+			</if>
+			<if test="giftAmount != null">
+				#{giftAmount},
+			</if>
+			<if test="giftPoint != null">
+				#{giftPoint},
+			</if>
+			<if test="merchantSettleAmount != null">
+				#{merchantSettleAmount},
+			</if>
+			<if test="payStatus != null">
+				#{payStatus},
+			</if>
+			<if test="payDesc != null">
+				#{payDesc},
+			</if>
+			<if test="createBy != null">
+				#{createBy},
+			</if>
+			<if test="createTime != null">
+				#{createTime},
+			</if>
+			<if test="modifyBy != null">
+				#{modifyBy},
+			</if>
+			<if test="modifyTime != null">
+				#{modifyTime},
+			</if>
+			<if test="joinType != null">
+				#{joinType},
+			</if>
+			<if test="settleMerchantNo != null">
+				#{settleMerchantNo},
+			</if>
+			<if test="parentMerchantNo != null">
+				#{parentMerchantNo}
+			</if>
+		</trim>
+	</insert>
+	<update id="updateStatusByPayId" parameterType="com.gl365.payment.model.PayPrepay" >
+    update pay_prepay
+    	set
+		pay_status = #{payStatus},
+		pay_desc = #{payDesc},
+		modify_time = now(),
+		modify_by = #{modifyBy}
+     	where pay_id = #{payId}
+  </update>
+
+<select id="queryByPayId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+		*
+    from pay_prepay
+    where pay_id = #{payId}
+  </select>
+</mapper>
